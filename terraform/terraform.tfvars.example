@@ -1,0 +1,23 @@
+virtual_environment_endpoint  = "https://192.168.1.2:8006/"
+# Api чтобы OpenTofu подключился к proxmox
+virtual_environment_api_token = "Datacenter -> Permissions -> API Tokens"
+# Публичный ключ: Cloud-Init прошьет его в пользователя ubuntu, 
+# чтобы мы и Ansible могли заходить на сервер по SSH без пароля
+ssh_public_key = [
+"ssh-ed25519 ***********",
+"ssh-ed25519 ***********"
+]
+virtual_machines = {
+"k8s-master-01" = {
+    ip_address = "192.168.1.30/24"
+    cores     = 2
+    memory    = 4096
+    disk_size = 10
+  }
+"k8s-worker-01" = {
+    ip_address = "192.168.1.31/24"
+    cores     = 2
+    memory    = 4096
+    disk_size = 10
+  }
+}
